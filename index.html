@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetShop - Tienda de Mascotas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">PetShop</a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="cart-btn" id="cartBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section id="inicio" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Tu mascota merece lo mejor</h1>
+        <p>Productos premium y servicios especializados para el cuidado de tus compañeros de vida.</p>
+        <a href="#productos" class="btn-primary">Ver productos</a>
+      </div>
+      <div class="hero-image">
+        <div class="hero-shape"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="productos" class="products">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Nuestros productos</h2>
+        <p>Seleccionados con amor para tu mascota</p>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="perro">Perros</button>
+        <button class="filter-btn" data-filter="gato">Gatos</button>
+        <button class="filter-btn" data-filter="accesorio">Accesorios</button>
+      </div>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="services">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Servicios</h2>
+        <p>Cuidado integral para tu mascota</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3>Veterinaria</h3>
+          <p>Consultas, vacunación y chequeos preventivos con profesionales certificados.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+          <h3>Estética</h3>
+          <p>Baño, corte y arreglo completo para que tu mascota luzca increíble.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3>Pet Shop</h3>
+          <p>Tienda especializada con las mejores marcas de alimentos y accesorios.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Guardería</h3>
+          <p>Hospedaje seguro y divertido cuando necesitas estar ausente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" class="about">
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>Sobre nosotros</h2>
+          <p>En PetShop creemos que cada mascota es parte de la familia. Desde 2010, nos dedicamos a ofrecer productos y servicios de la más alta calidad para garantizar el bienestar de tus compañeros peludos.</p>
+          <p>Nuestro equipo de veterinarios y especialistas trabaja con pasión y compromiso para brindar la mejor atención.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Años de experiencia</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">10k+</span>
+              <span class="stat-label">Mascotas atendidas</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Productos premium</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="about-shape"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Contacto</h2>
+        <p>Estamos aquí para ayudarte</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div>
+              <h4>Dirección</h4>
+              <p>Av. Principal 123, Ciudad de México</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <div>
+              <h4>Teléfono</h4>
+              <p>+52 55 1234 5678</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <div>
+              <h4>Horario</h4>
+              <p>Lun - Sáb: 9:00 - 20:00</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Email" required>
+          </div>
+          <input type="text" placeholder="Asunto" required>
+          <textarea placeholder="Mensaje" rows="5" required></textarea>
+          <button type="submit" class="btn-primary">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo">PetShop</span>
+        <p>Tu tienda de confianza para el cuidado de mascotas.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces</h4>
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+      </div>
+      <div class="footer-links">
+        <h4>Servicios</h4>
+        <a href="#servicios">Veterinaria</a>
+        <a href="#servicios">Estética</a>
+        <a href="#servicios">Guardería</a>
+        <a href="#servicios">Pet Shop</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contacto</h4>
+        <a href="#">+52 55 1234 5678</a>
+        <a href="#">info@petshop.com</a>
+        <a href="#">Av. Principal 123</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PetShop. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h3>Mi carrito</h3>
+      <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Tu carrito está vacío</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">$0</span>
+      </div>
+      <button class="btn-primary btn-full">Comprar ahora</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
