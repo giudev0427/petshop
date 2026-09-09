@@ -1,19 +1,26 @@
 const products = [
-  { id: 1, name: 'Comida Premium Perro', category: 'perro', price: 450, icon: '🐕' },
-  { id: 2, name: 'Comida Premium Gato', category: 'gato', price: 420, icon: '🐈' },
-  { id: 3, name: 'Juguete Interactive Ball', category: 'perro', price: 180, icon: '🎾' },
-  { id: 4, name: 'Rascador Torre', category: 'gato', price: 650, icon: '🏗️' },
-  { id: 5, name: 'Correa Ajustable', category: 'accesorio', price: 290, icon: '🔗' },
-  { id: 6, name: 'Plato Doble Inox', category: 'accesorio', price: 340, icon: '🍽️' },
-  { id: 7, name: 'Snack Dental Perro', category: 'perro', price: 120, icon: '🦴' },
-  { id: 8, name: 'Arena Premium Gato', category: 'gato', price: 280, icon: '📦' },
-  { id: 9, name: 'Cama Ortopédica', category: 'perro', price: 890, icon: '🛏️' },
-  { id: 10, name: 'Transportadora', category: 'accesorio', price: 750, icon: '🧳' },
-  { id: 11, name: 'Chaleco Reflectante', category: 'perro', price: 220, icon: '🦺' },
-  { id: 12, name: 'Juguete Ratoncito', category: 'gato', price: 95, icon: '🐭' },
+  { id: 1, name: 'Comida Premium Perro', category: 'perro', price: 450, oldPrice: 520, discount: 13, image: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&q=80' },
+  { id: 2, name: 'Comida Premium Gato', category: 'gato', price: 420, oldPrice: null, discount: null, image: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=400&q=80' },
+  { id: 3, name: 'Juguete Interactive Ball', category: 'perro', price: 180, oldPrice: 210, discount: 14, image: 'https://images.unsplash.com/photo-1552410260-0fd9b577afa6?w=400&q=80' },
+  { id: 4, name: 'Rascador Torre', category: 'gato', price: 650, oldPrice: null, discount: null, image: 'https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=400&q=80' },
+  { id: 5, name: 'Correa Ajustable', category: 'accesorio', price: 290, oldPrice: 340, discount: 15, image: 'https://images.unsplash.com/photo-1560421683-6856ea585c78?w=400&q=80' },
+  { id: 6, name: 'Plato Doble Inox', category: 'accesorio', price: 340, oldPrice: null, discount: null, image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80' },
+  { id: 7, name: 'Snack Dental Perro', category: 'perro', price: 120, oldPrice: 150, discount: 20, image: 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400&q=80' },
+  { id: 8, name: 'Arena Premium Gato', category: 'gato', price: 280, oldPrice: null, discount: null, image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400&q=80' },
+  { id: 9, name: 'Cama Ortopédica', category: 'perro', price: 890, oldPrice: 1050, discount: 15, image: 'https://images.unsplash.com/photo-1541599465526-7767dc7e8f9d?w=400&q=80' },
+  { id: 10, name: 'Transportadora', category: 'accesorio', price: 750, oldPrice: null, discount: null, image: 'https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=400&q=80' },
+  { id: 11, name: 'Chaleco Reflectante', category: 'perro', price: 220, oldPrice: null, discount: null, image: 'https://images.unsplash.com/photo-1553226568-982e79f8dd5f?w=400&q=80' },
+  { id: 12, name: 'Juguete Ratoncito', category: 'gato', price: 95, oldPrice: 120, discount: 21, image: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&q=80' },
+  { id: 13, name: 'Cepillo Deslanador', category: 'accesorio', price: 160, oldPrice: 190, discount: 16, image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=400&q=80' },
+  { id: 14, name: 'Champú Hipoalergénico', category: 'accesorio', price: 210, oldPrice: 240, discount: 12, image: 'https://images.unsplash.com/photo-1583338917451-9e9e5e2d5f5b?w=400&q=80' },
+  { id: 15, name: 'Bebedero Automático', category: 'gato', price: 580, oldPrice: 690, discount: 16, image: 'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=400&q=80' },
+  { id: 16, name: 'Dispensador de Comida', category: 'perro', price: 460, oldPrice: null, discount: null, image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&q=80' },
 ];
 
 let cart = [];
+let currentFilter = 'all';
+let currentSort = 'default';
+let currentSearch = '';
 
 const productsGrid = document.getElementById('productsGrid');
 const cartBtn = document.getElementById('cartBtn');
@@ -27,18 +34,51 @@ const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.querySelector('.nav-links');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const contactForm = document.getElementById('contactForm');
+const searchInput = document.getElementById('searchInput');
+const sortSelect = document.getElementById('sortSelect');
+const productCards = document.querySelectorAll('.product-card');
 
-function renderProducts(filter = 'all') {
-  const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
-  productsGrid.innerHTML = filtered.map(p => `
-    <div class="product-card" data-category="${p.category}">
-      <div class="product-image">${p.icon}</div>
+function getFilteredProducts() {
+  let result = products.filter(p =>
+    (currentFilter === 'all' || p.category === currentFilter)
+  );
+
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    result = result.filter(p =>
+      p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+    );
+  }
+
+  if (currentSort === 'asc') {
+    result.sort((a, b) => a.price - b.price);
+  } else if (currentSort === 'desc') {
+    result.sort((a, b) => b.price - a.price);
+  } else if (currentSort === 'discount') {
+    result.sort((a, b) => (b.discount || 0) - (a.discount || 0));
+  }
+
+  return result;
+}
+
+function renderProducts() {
+  const filtered = getFilteredProducts();
+  productsGrid.innerHTML = filtered.map((p, i) => `
+    <div class="product-card reveal" style="animation-delay: ${i * 0.05}s">
+      <div class="product-image-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        ${p.discount ? `<span class="discount-badge">-${p.discount}%</span>` : ''}
+        ${p.oldPrice ? `<span class="best-badge">Oferta</span>` : ''}
+      </div>
       <div class="product-info">
         <div class="product-category">${p.category}</div>
         <div class="product-name">${p.name}</div>
         <div class="product-footer">
-          <span class="product-price">$${p.price}</span>
-          <button class="add-cart-btn" onclick="addToCart(${p.id})">
+          <div class="price-block">
+            ${p.oldPrice ? `<span class="old-price">$${p.oldPrice}</span>` : ''}
+            <span class="product-price">$${p.price}</span>
+          </div>
+          <button class="add-cart-btn" onclick="addToCart(${p.id})" title="Agregar al carrito">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
             </svg>
@@ -47,6 +87,14 @@ function renderProducts(filter = 'all') {
       </div>
     </div>
   `).join('');
+
+  if (filtered.length === 0) {
+    productsGrid.innerHTML = '<p class="no-results">No se encontraron productos para tu búsqueda.</p>';
+  }
+
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.product-card.reveal').forEach(card => card.classList.add('visible'));
+  });
 }
 
 function addToCart(id) {
@@ -57,6 +105,16 @@ function addToCart(id) {
   } else {
     cart.push({ ...product, qty: 1 });
   }
+
+  const btn = document.querySelector(`.add-cart-btn[onclick="addToCart(${id})"]`);
+  if (btn) {
+    btn.classList.add('added');
+    setTimeout(() => btn.classList.remove('added'), 600);
+  }
+
+  cartBtn.classList.add('bump');
+  setTimeout(() => cartBtn.classList.remove('bump'), 600);
+
   updateCart();
 }
 
@@ -76,7 +134,9 @@ function updateCart() {
   } else {
     cartItems.innerHTML = cart.map(item => `
       <div class="cart-item">
-        <div class="cart-item-icon">${item.icon}</div>
+        <div class="cart-item-icon">
+          <img src="${item.image}" alt="${item.name}">
+        </div>
         <div class="cart-item-details">
           <div class="cart-item-name">${item.name} x${item.qty}</div>
           <div class="cart-item-price">$${item.price * item.qty}</div>
@@ -111,8 +171,19 @@ filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    renderProducts(btn.dataset.filter);
+    currentFilter = btn.dataset.filter;
+    renderProducts();
   });
+});
+
+searchInput.addEventListener('input', (e) => {
+  currentSearch = e.target.value.trim();
+  renderProducts();
+});
+
+sortSelect.addEventListener('change', (e) => {
+  currentSort = e.target.value;
+  renderProducts();
 });
 
 contactForm.addEventListener('submit', (e) => {
@@ -130,6 +201,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       navLinks.classList.remove('active');
     }
   });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section-header, .service-card').forEach(el => {
+  observer.observe(el);
+});
+
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
 });
 
 renderProducts();

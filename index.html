@@ -56,6 +56,20 @@
         <button class="filter-btn" data-filter="gato">Gatos</button>
         <button class="filter-btn" data-filter="accesorio">Accesorios</button>
       </div>
+      <div class="toolbar">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Buscar productos..." autocomplete="off">
+        </div>
+        <select id="sortSelect">
+          <option value="default">Ordenar por</option>
+          <option value="asc">Precio: menor a mayor</option>
+          <option value="desc">Precio: mayor a menor</option>
+          <option value="discount">Mayor descuento</option>
+        </select>
+      </div>
       <div class="products-grid" id="productsGrid">
         <!-- Products injected by JS -->
       </div>
